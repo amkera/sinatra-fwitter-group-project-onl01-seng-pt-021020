@@ -23,8 +23,11 @@ class TweetsController < ApplicationController
         redirect to "/tweets/new"
       else
         @tweet = current_user.tweets.build(content: params[:content])
+        #creating a tweet and associating to the current_user
+        
         if @tweet.save
           redirect to "/tweets/#{@tweet.id}"
+          #tweet has an id in the database 
         else
           redirect to "/tweets/new"
         end
